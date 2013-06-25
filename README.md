@@ -1,4 +1,19 @@
 image-sorter
 ============
 
-A Gtk-Ruby image
+A Gtk-Ruby image sorter
+
+A simple tool for sorting jpg/jpeg images to a maximum of 4 different folders at one. I made it to sort my Dropbox synced images.
+
+Requirements
+------------
+* ruby
+* ruby-gtk2
+
+Usage
+-----
+* Start the application by ```ruby image-sorter.rb [path]```. If no path given it will use the current path.
+* Type folder names to the text inputs
+* Press ESC key to set focus on the buttons
+* Press keys 0, 1, 2, 3 to move current image to the chosen subfolder, or Return to skip
+* You can use the mouse if you wish
