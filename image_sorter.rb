@@ -32,7 +32,7 @@ class ImageSorter < Gtk::Window
     add table
     
     @imgview = Gtk::Image.new
-    table.attach @imgview,   0, 4,  0, 10
+    table.attach @imgview, 0, 4, 0, 10
         
     folders = []
     buttons = []
