@@ -1,9 +1,9 @@
 image-sorter
 ============
 
-A Gtk-Ruby image sorter
+A simple gtk-ruby image sorter
 
-A simple tool for sorting jpg/jpeg images to a maximum of 4 different folders at one. I made it to sort my Dropbox synced images.
+A small tool for sorting jpg/jpeg images to a maximum of 4 different folders at one. I made it to sort my Dropbox synced images.
 
 Requirements
 ------------
