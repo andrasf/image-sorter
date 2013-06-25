@@ -28,44 +28,35 @@ class ImageSorter < Gtk::Window
   end
 
   def init_ui
+    table = Gtk::Table.new 0, 0, true
+    add table
+    
     @imgview = Gtk::Image.new
+    table.attach @imgview,   0, 4,  0, 10
+        
     folders = []
     buttons = []
+    
     4.times do |i|
       folders.push Gtk::Entry.new
       buttons.push Gtk::Button.new "[#{i}]"
-    end
-    
-    table = Gtk::Table.new 0, 0, true
-    
-    table.attach @imgview,   0, 4,  0, 10
-    table.attach folders[0], 0, 1, 10, 11
-    table.attach folders[1], 1, 2, 10, 11
-    table.attach folders[2], 2, 3, 10, 11
-    table.attach folders[3], 3, 4, 10, 11
-    table.attach buttons[0], 0, 1, 11, 12
-    table.attach buttons[1], 1, 2, 11, 12
-    table.attach buttons[2], 2, 3, 11, 12
-    table.attach buttons[3], 3, 4, 11, 12
-    
-    add table
-    
-    folders.each_with_index do |folder, i|
-      folder.signal_connect 'key-release-event' do |w, e|
+      
+      table.attach folders[i], i, i+1, 10, 11
+      table.attach buttons[i], i, i+1, 11, 12
+      
+      folders[i].signal_connect 'key-release-event' do |w, e|
         buttons[i].grab_focus if e.keyval == ESCAPE
         buttons[i].label = "[#{i}] #{w.text}"
       end
-    end
-    
-    buttons.each_with_index do |button, i|
-      button.signal_connect 'clicked' do |w, e|
+      
+      buttons[i].signal_connect 'clicked' do |w, e|
         buttons[i].grab_focus
         unless folders[i].text.empty?
           move_image folders[i].text
           get_next_image
         end
       end
-      button.signal_connect 'key-press-event' do |w, e|
+      buttons[i].signal_connect 'key-press-event' do |w, e|
         if e.keyval == ENTER
           puts "Skip #{@image}"
           get_next_image
