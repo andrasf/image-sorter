@@ -57,15 +57,15 @@ class ImageSorter < Gtk::Window
       end
     end
     
-    buttons.each_with_index do |btn, i|
-      btn.signal_connect 'clicked' do |w, e|
+    buttons.each_with_index do |button, i|
+      button.signal_connect 'clicked' do |w, e|
         buttons[i].grab_focus
         unless folders[i].text.empty?
           move_image folders[i].text
           get_next_image
         end
       end
-      btn.signal_connect 'key-press-event' do |w, e|
+      button.signal_connect 'key-press-event' do |w, e|
         if e.keyval == ENTER
           puts "Skip #{@image}"
           get_next_image
